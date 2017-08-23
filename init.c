@@ -20,7 +20,8 @@ main(void)
   dup(0);  // stderr
 
   for(;;){
-    printf(1, "init: starting sh\n");
+    // printf(1, "init: starting sh\n");
+    printf(1, "         /\\_/\\\n    ____/ o o \\\n  /~____  =ø= /\n (______)__m_m)\n");
     pid = fork();
     if(pid < 0){
       printf(1, "init: fork failed\n");
