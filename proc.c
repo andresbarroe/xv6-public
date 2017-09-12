@@ -581,8 +581,3 @@ procdump(void)
     cprintf("\n");
   }
 }
-
-void
-printHello(){
-  cprintf("1.- Control C\n");
-}
