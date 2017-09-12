@@ -188,7 +188,7 @@ struct {
 
 #define C(x)  ((x)-'@')  // Control-x
 
-extern void printHello(void);
+extern int ControlC(void);
 
 void
 consoleintr(int (*getc)(void))
@@ -236,8 +236,7 @@ consoleintr(int (*getc)(void))
     procdump();  // now call procdump() wo. cons.lock held
   }
   if(docontrolc){
-    printHello();
-    cprintf("Control C\n");
+    ControlC();
   }
 }
 

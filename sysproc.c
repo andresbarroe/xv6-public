@@ -114,3 +114,15 @@ sys_set_priority(void)
   myproc()->priority = priority;
   return 0;
 }
+
+int
+ControlC(void){
+  cprintf("^C\n");
+  if(!myproc())
+    return -1;
+  int pid = myproc()->pid;
+  if(pid <= 0){
+     return -1;
+  }
+  return kill(pid);
+}
