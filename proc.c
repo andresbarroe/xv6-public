@@ -582,7 +582,13 @@ procdump(void)
   }
 }
 
-void
-printHello(){
-  cprintf("1.- Control C\n");
+int
+kill_current(void){
+  if(!myproc())
+    return -1;
+  int pid = myproc()->pid;
+  if(pid <= 0){
+     return -1;
+  }
+  return kill(pid);
 }
