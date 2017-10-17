@@ -34,6 +34,8 @@ struct context {
 
 enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
+#define SIGNAL_MAX 4
+
 // Per-process state
 struct proc {
   uint sz;                     // Size of process memory (bytes)
@@ -50,6 +52,7 @@ struct proc {
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
   uchar priority;              // Process Priority
+  sighandler_t signals[SIGNAL_MAX]; // Signal handlers
 };
 
 // Process memory is laid out contiguously, low addresses first:

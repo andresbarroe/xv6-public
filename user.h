@@ -20,15 +20,18 @@ int mkdir(char*);
 int chdir(char*);
 int dup(int);
 int getpid(void);
-char* sbrk(int);
+char *sbrk(int);
 int sleep(int);
 int uptime(void);
 int shutdown(void);
 int reboot(void);
 int set_priority(int);
 int shmem(int);
-char * shmat(int);
+char *shmat(int);
 int shdemat(int);
+int getppid(void);
+int signal(int signum, sighandler_t handler);
+int killsignal(int pid, int signum);
 
 // ulib.c
 int stat(char*, struct stat*);
