@@ -443,3 +443,22 @@ sys_pipe(void)
   fd[1] = fd1;
   return 0;
 }
+
+int sys_chmod(void){
+  char *fname, *permissions;
+  struct inode *ip;
+  if(argstr(0, &permissions) < 0 || argstr(1, &fname) < 0)
+    return -1;
+  begin_op();
+  if((ip = namei(fname)) == 0)
+  {
+    end_op();
+    return -1;
+  }
+  ilock(ip);
+  memmove(ip->permissions, permissions, 4);
+  iupdate(ip); // guardar en HDD
+  iunlock(ip);
+  end_op();
+  return 1;
+}
